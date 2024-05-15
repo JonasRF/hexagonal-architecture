@@ -15,10 +15,11 @@ type ProductInterface interface {
 	IsValid() (bool, error)
 	Enable() error
 	Disable() error
-	GetId() string
+	GetID() string
 	GetName() string
 	GetStatus() string
-	getPrice() float64
+	GetPrice() float64
+	ChangePrice(price float64) error
 }
 
 type ProductServiceInterface interface {
