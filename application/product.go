@@ -3,7 +3,6 @@ package application
 import (
 	"errors"
 	"github.com/asaskevich/govalidator"
-	_ "github.com/satori/go.uuid"
 	uuid "github.com/satori/go.uuid"
 )
 
@@ -54,6 +53,18 @@ type Product struct {
 	Status string  `valid:"required"`
 }
 
+func (p *Product) ChangePrice(price float64) error {
+	if p.Price < 0 {
+		return errors.New("price only accept postive numbers")
+	}
+	p.Price = price
+	_, err := p.IsValid()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func NewProduct() *Product {
 	product := Product{
 		ID:     uuid.NewV4().String(),
@@ -97,7 +108,7 @@ func (p *Product) Disable() error {
 	return errors.New("the price must be zero in order to have the product disabled")
 }
 
-func (p *Product) GetId() string {
+func (p *Product) GetID() string {
 	return p.ID
 }
 
@@ -109,6 +120,6 @@ func (p *Product) GetStatus() string {
 	return p.Status
 }
 
-func (p *Product) getPrice() float64 {
+func (p *Product) GetPrice() float64 {
 	return p.Price
 }

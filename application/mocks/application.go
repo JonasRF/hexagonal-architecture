@@ -34,6 +34,20 @@ func (m *MockProductInterface) EXPECT() *MockProductInterfaceMockRecorder {
 	return m.recorder
 }
 
+// ChangePrice mocks base method.
+func (m *MockProductInterface) ChangePrice(price float64) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ChangePrice", price)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// ChangePrice indicates an expected call of ChangePrice.
+func (mr *MockProductInterfaceMockRecorder) ChangePrice(price interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ChangePrice", reflect.TypeOf((*MockProductInterface)(nil).ChangePrice), price)
+}
+
 // Disable mocks base method.
 func (m *MockProductInterface) Disable() error {
 	m.ctrl.T.Helper()
@@ -62,18 +76,18 @@ func (mr *MockProductInterfaceMockRecorder) Enable() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Enable", reflect.TypeOf((*MockProductInterface)(nil).Enable))
 }
 
-// GetId mocks base method.
-func (m *MockProductInterface) GetId() string {
+// GetID mocks base method.
+func (m *MockProductInterface) GetID() string {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetId")
+	ret := m.ctrl.Call(m, "GetID")
 	ret0, _ := ret[0].(string)
 	return ret0
 }
 
-// GetId indicates an expected call of GetId.
-func (mr *MockProductInterfaceMockRecorder) GetId() *gomock.Call {
+// GetID indicates an expected call of GetID.
+func (mr *MockProductInterfaceMockRecorder) GetID() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetId", reflect.TypeOf((*MockProductInterface)(nil).GetId))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetID", reflect.TypeOf((*MockProductInterface)(nil).GetID))
 }
 
 // GetName mocks base method.
@@ -88,6 +102,20 @@ func (m *MockProductInterface) GetName() string {
 func (mr *MockProductInterfaceMockRecorder) GetName() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetName", reflect.TypeOf((*MockProductInterface)(nil).GetName))
+}
+
+// GetPrice mocks base method.
+func (m *MockProductInterface) GetPrice() float64 {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetPrice")
+	ret0, _ := ret[0].(float64)
+	return ret0
+}
+
+// GetPrice indicates an expected call of GetPrice.
+func (mr *MockProductInterfaceMockRecorder) GetPrice() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrice", reflect.TypeOf((*MockProductInterface)(nil).GetPrice))
 }
 
 // GetStatus mocks base method.
@@ -117,20 +145,6 @@ func (m *MockProductInterface) IsValid() (bool, error) {
 func (mr *MockProductInterfaceMockRecorder) IsValid() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsValid", reflect.TypeOf((*MockProductInterface)(nil).IsValid))
-}
-
-// getPrice mocks base method.
-func (m *MockProductInterface) getPrice() float64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "getPrice")
-	ret0, _ := ret[0].(float64)
-	return ret0
-}
-
-// getPrice indicates an expected call of getPrice.
-func (mr *MockProductInterfaceMockRecorder) getPrice() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "getPrice", reflect.TypeOf((*MockProductInterface)(nil).getPrice))
 }
 
 // MockProductServiceInterface is a mock of ProductServiceInterface interface.
