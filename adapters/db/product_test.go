@@ -3,6 +3,7 @@ package db_test
 import (
 	"database/sql"
 	"github.com/codeedu/go-hexagonal/adapters/db"
+	"github.com/codeedu/go-hexagonal/application"
 	"github.com/stretchr/testify/require"
 	"log"
 	"testing"
@@ -48,4 +49,14 @@ func TestProductDb_Get(t *testing.T) {
 	require.Equal(t, "Product Test", product.GetName())
 	require.Equal(t, 0.0, product.GetPrice())
 	require.Equal(t, "disabled", product.GetStatus())
+}
+
+func TestProductDb_Save(t *testing.T) {
+	setUp()
+	defer Db.Close()
+	productDb := db.NewProductDb(Db)
+
+	product := application.NewProduct()
+	product.Name = "Product Test"
+	product.Price = 25
 }
